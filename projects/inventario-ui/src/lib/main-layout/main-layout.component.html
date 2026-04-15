@@ -1,0 +1,14 @@
+<div class="layout-principal">
+  <app-barra-lateral [config]="sidebarConfig"></app-barra-lateral>
+
+  <main class="contenido-principal">
+    <app-barra-superior
+      [perfil]="perfil"
+      [buscarPlaceholder]="buscarPlaceholder"
+    ></app-barra-superior>
+
+    <div class="contenido-principal__contenedor">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
