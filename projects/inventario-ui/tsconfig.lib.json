@@ -6,5 +6,8 @@
     "declaration": true,
     "inlineSources": true
   },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
+  },
   "exclude": ["**/*.spec.ts"]
 }

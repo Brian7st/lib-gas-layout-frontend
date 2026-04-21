@@ -1,4 +1,16 @@
 <header class="barra-superior">
+  @if (enlaces.length > 0) {
+    <nav class="barra-superior__nav">
+      @for (enlace of enlaces; track enlace.ruta) {
+        <a
+          class="barra-superior__nav-link"
+          [routerLink]="enlace.ruta"
+          routerLinkActive="barra-superior__nav-link--activo"
+        >{{ enlace.label }}</a>
+      }
+    </nav>
+  }
+
   <div class="barra-superior__buscador-contenedor">
     <div class="barra-superior__buscador">
       <lucide-icon name="search" class="barra-superior__buscador-icono"></lucide-icon>

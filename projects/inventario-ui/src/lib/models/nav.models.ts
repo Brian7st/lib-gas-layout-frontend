@@ -22,3 +22,8 @@ export interface BarraLateralConfig {
   logoUrl?: string;
   grupos: NavGrupo[];
 }
+
+export interface TopNavLink {
+  label: string;
+  ruta: string;
+}
