@@ -1,6 +1,6 @@
 # inventario-ui — Librería de UI compartida
 
-Librería Angular 18 con la estructura visual base para todos los micro-frontends del sistema de inventario SENA.
+Librería Angular 20 con la estructura visual base para todos los micro-frontends del sistema de inventario SENA.
 
 ## Qué incluye
 
