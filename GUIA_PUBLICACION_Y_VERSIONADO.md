@@ -102,13 +102,15 @@ La próxima publicación debe volver a correr `npm run build` para confirmar que
 4. publicar versión estable
 5. migrar los otros 4 micro-frontends
 
-## 6. Contrato mínimo del consumidor
+## 6. Contrato m?nimo del consumidor
 
 Cada micro-frontend debe:
 
-1. instalar la misma versión exacta de `inventario-ui`
+1. instalar la misma versi?n exacta de `inventario-ui`
 2. registrar `provideInventarioUi()` en `app.config.ts`
 3. importar `@use 'inventario-ui/styles';` en `src/styles.scss` si necesita reset/tokens/utilidades globales
+4. evitar imports internos como `inventario-ui/src/styles/...`
+5. evitar `preserveSymlinks` salvo que exista una evidencia t?cnica nueva despu?s de corregir el empaquetado
 
 ## 7. Lo que no se debe hacer
 

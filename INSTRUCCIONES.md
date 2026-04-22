@@ -55,6 +55,14 @@ Si adem?s necesit?s reutilizar tokens Sass desde el micro-frontend:
 }
 ```
 
+No uses imports internos del paquete como:
+
+```scss
+@use 'inventario-ui/src/styles/styles.scss';
+```
+
+Si eso hiciera falta en un consumidor, el problema est? en el empaquetado de la librer?a y no en el micro-frontend.
+
 ### 3. Registrar providers de la librer?a
 
 La librer?a expone `provideInventarioUi()` como punto ?nico de integraci?n para registrar el set base de ?conos din?micos y simplificar la migraci?n entre micro-frontends.
@@ -87,6 +95,14 @@ export const appConfig: ApplicationConfig = {
     })
   ]
 };
+```
+
+Importante: `provideInventarioUi()` recibe opciones, no una lista libre de argumentos. La forma correcta para registrar ?conos extra es:
+
+```typescript
+provideInventarioUi({
+  icons: [LucideHome, LucideLogOut]
+})
 ```
 
 ### 4. Definir la configuración del sidebar

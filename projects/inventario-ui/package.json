@@ -9,10 +9,10 @@
   },
   "exports": {
     "./styles": {
-      "sass": "./styles/styles.scss"
+      "sass": "./src/styles/styles.scss"
     },
     "./tokens": {
-      "sass": "./styles/_variables.scss"
+      "sass": "./src/styles/_variables.scss"
     }
   },
   "dependencies": {},
