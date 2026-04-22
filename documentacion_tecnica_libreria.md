@@ -14,7 +14,7 @@
 | **Versión** | `1.0.0` |
 | **Angular** | `^20.0.0` |
 | **TypeScript** | `~5.9.0` |
-| **Selector prefix** | `app-` |
+| **Selector prefix** | `lib-` |
 | **Compilación** | Partial (Ivy) |
 | **Salida** | `dist/inventario-ui/` |
 
@@ -38,7 +38,7 @@ Proveer la **estructura visual base** (shell) idéntica para todos los micro-fro
 | `@angular/platform-browser` | `^20.0.0` |
 | `@angular/platform-browser-dynamic` | `^20.0.0` |
 | `@angular/router` | `^20.0.0` |
-| `lucide-angular` | `^1.0.0` |
+| `@lucide/angular` | `^0.547.0` |
 | `rxjs` | `~7.8.0` |
 | `tslib` | `^2.3.0` |
 | `zone.js` | `~0.15.0` |
@@ -60,7 +60,7 @@ Proveer la **estructura visual base** (shell) idéntica para todos los micro-fro
 | `@angular/common` | `^20.0.0` |
 | `@angular/core` | `^20.0.0` |
 | `@angular/router` | `^20.0.0` |
-| `lucide-angular` | `^1.0.0` |
+| `@lucide/angular` | `^0.547.0` |
 
 ---
 
@@ -179,7 +179,7 @@ export interface TopNavLink {
 
 | Propiedad | Valor |
 |---|---|
-| **Selector** | `app-main-layout` |
+| **Selector** | `lib-main-layout` |
 | **Standalone** | `true` |
 | **Imports** | `CommonModule`, `RouterModule`, `BarraLateralComponent`, `BarraSuperiorComponent` |
 
@@ -196,14 +196,14 @@ export interface TopNavLink {
 
 ```html
 <div class="layout-principal">
-  <app-barra-lateral [config]="sidebarConfig"></app-barra-lateral>
+  <lib-barra-lateral [config]="sidebarConfig"></lib-barra-lateral>
 
   <main class="contenido-principal">
-    <app-barra-superior
+    <lib-barra-superior
       [perfil]="perfil"
       [buscarPlaceholder]="buscarPlaceholder"
       [enlaces]="topMenu"
-    ></app-barra-superior>
+    ></lib-barra-superior>
 
     <div class="contenido-principal__contenedor">
       <router-outlet></router-outlet>
@@ -236,9 +236,9 @@ export interface TopNavLink {
 
 | Propiedad | Valor |
 |---|---|
-| **Selector** | `app-barra-lateral` |
+| **Selector** | `lib-barra-lateral` |
 | **Standalone** | `true` |
-| **Imports** | `CommonModule`, `RouterModule`, `LucideAngularModule` |
+| **Imports** | `CommonModule`, `RouterModule`, `LucideDynamicIcon`, `LucideBox`, `LucideSettings`, etc. |
 | **BEM Block** | `.barra-lateral` |
 
 #### Input
@@ -292,9 +292,9 @@ export interface TopNavLink {
 
 | Propiedad | Valor |
 |---|---|
-| **Selector** | `app-barra-superior` |
+| **Selector** | `lib-barra-superior` |
 | **Standalone** | `true` |
-| **Imports** | `CommonModule`, `RouterModule`, `LucideAngularModule` |
+| **Imports** | `CommonModule`, `RouterModule`, `LucideSearch`, `LucideBell`, `LucideUser` |
 | **BEM Block** | `.barra-superior` |
 
 #### Inputs
@@ -601,7 +601,7 @@ graph TD
     A --> D["RouterModule"]
     B --> E["nav.models.ts"]
     C --> E
-    B --> F["LucideAngularModule"]
+    B --> F["@lucide/angular"]
     C --> F
     G["styles.scss"] --> H["_variables.scss"]
     B -.->|"@import"| H

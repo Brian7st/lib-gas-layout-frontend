@@ -43,7 +43,23 @@ npm install inventario-ui
 ]
 ```
 
-### 3. Definir la configuración del sidebar
+### 3. Registrar íconos dinámicos de Lucide
+
+Como la librería usa `@lucide/angular` y carga íconos dinámicos en la barra lateral basándose en strings (`icono: 'layout-dashboard'`), **debés proveer esos íconos** en el `app.config.ts` de tu proyecto para que se rendericen correctamente:
+
+```typescript
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideLucideIcons, LayoutDashboard, List, TriangleAlert } from '@lucide/angular';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideLucideIcons({ LayoutDashboard, List, TriangleAlert }) // Registrar íconos usados
+  ]
+};
+```
+
+### 4. Definir la configuración del sidebar
 
 ```typescript
 // app.config.ts o app.routes.ts
@@ -71,7 +87,7 @@ export const SIDEBAR_CONFIG: BarraLateralConfig = {
 };
 ```
 
-### 4. Configurar las rutas con MainLayout como shell
+### 5. Configurar las rutas con MainLayout como shell
 
 ```typescript
 // app.routes.ts
@@ -84,7 +100,7 @@ export const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     // Pasar la config al componente mediante inputs de la ruta
-    // (ver paso 5 para la forma recomendada con providers o token)
+    // (ver paso 6 para la forma recomendada con providers o token)
     children: [
       {
         path: 'dashboard',
@@ -101,7 +117,7 @@ export const routes: Routes = [
 ];
 ```
 
-### 5. Pasar la config al MainLayoutComponent
+### 6. Pasar la config al MainLayoutComponent
 
 En el `app.component.html` del micro-frontend:
 
@@ -113,12 +129,12 @@ En el `app.component.html` del micro-frontend:
 O si usás `MainLayoutComponent` directamente con `@Input()` desde el template raíz:
 
 ```html
-<app-main-layout
+<lib-main-layout
   [sidebarConfig]="sidebarConfig"
   [perfil]="{ nombre: 'Juan', avatarUrl: 'assets/avatar.png' }"
   buscarPlaceholder="Buscar en mi módulo..."
 >
-</app-main-layout>
+</lib-main-layout>
 ```
 
 ```typescript
@@ -138,7 +154,7 @@ export class AppComponent {
 }
 ```
 
-### 6. Las vistas solo necesitan su contenido
+### 7. Las vistas solo necesitan su contenido
 
 ```html
 <!-- cualquier-vista.component.html -->
