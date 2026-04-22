@@ -7,6 +7,14 @@
     "@angular/router": "^20.0.0",
     "@lucide/angular": "^1.8.0"
   },
+  "exports": {
+    "./styles": {
+      "sass": "./styles/styles.scss"
+    },
+    "./tokens": {
+      "sass": "./styles/_variables.scss"
+    }
+  },
   "dependencies": {},
   "sideEffects": false
 }

@@ -1,4 +1,5 @@
-@import '../../styles/variables';
+@use 'sass:color';
+@use '../../styles/variables' as *;
 
 $verde-sena-nuevo: #00AF00;
 $verde-sena-claro: rgba($verde-sena-nuevo, 0.1);
@@ -126,7 +127,7 @@ $verde-sena-hover: rgba($verde-sena-nuevo, 0.05);
 
     &:hover {
       background-color: $verde-sena-hover;
-      color: darken($verde-sena-nuevo, 10%);
+      color: color.adjust($verde-sena-nuevo, $lightness: -10%);
 
       .barra-lateral__icono {
         color: $verde-sena-nuevo;
@@ -136,7 +137,7 @@ $verde-sena-hover: rgba($verde-sena-nuevo, 0.05);
     &--activo {
       border-left: 4px solid $verde-sena-nuevo;
       background-color: $verde-sena-claro;
-      color: darken($verde-sena-nuevo, 15%);
+      color: color.adjust($verde-sena-nuevo, $lightness: -15%);
       font-weight: 700;
       padding-left: 0.75rem;
 

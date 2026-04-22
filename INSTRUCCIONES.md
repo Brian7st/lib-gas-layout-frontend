@@ -26,35 +26,65 @@ Genera `dist/inventario-ui/`.
 ### 1. Instalar
 
 ```bash
-# Con npm link (desarrollo local)
-cd dist/inventario-ui && npm link
-cd ../tu-micro-frontend && npm link inventario-ui
+# Recomendado para micro-frontends: misma versi?n exacta en todos los consumidores
+npm install inventario-ui@1.0.0
 
-# O una vez publicada en npm
-npm install inventario-ui
+# Desarrollo local estable (evitar npm link en Angular)
+npm install "file:../lib-gas-layout-frontend/dist/inventario-ui"
 ```
 
-### 2. Agregar los estilos globales en `angular.json`
+> Durante la migraci?n de los 5 micro-frontends, us? la **misma versi?n exacta** de `inventario-ui` en todos. Evit? `^` o `~` hasta terminar la ola de migraci?n.
 
-```json
-"styles": [
-  "node_modules/inventario-ui/styles/styles.scss",
-  "src/styles.scss"
-]
+### 2. Estilos compartidos
+
+El **shell principal ya incluye sus estilos cr?ticos** dentro de `MainLayoutComponent`, as? que la barra lateral, la barra superior y los espacios base del layout no dependen de un global obligatorio.
+
+Si quer?s sumar reset, tipograf?as y utilidades compartidas entre micro-frontends, agreg? esto en el `src/styles.scss` del consumidor:
+
+```scss
+@use 'inventario-ui/styles';
 ```
 
-### 3. Registrar íconos dinámicos de Lucide
+Si adem?s necesit?s reutilizar tokens Sass desde el micro-frontend:
 
-Como la librería usa `@lucide/angular` y carga íconos dinámicos en la barra lateral basándose en strings (`icono: 'layout-dashboard'`), **debés proveer esos íconos** en el `app.config.ts` de tu proyecto para que se rendericen correctamente:
+```scss
+@use 'inventario-ui/tokens' as inventario;
+
+.mi-clase {
+  color: inventario.$color-primario;
+}
+```
+
+### 3. Registrar providers de la librer?a
+
+La librer?a expone `provideInventarioUi()` como punto ?nico de integraci?n para registrar el set base de ?conos din?micos y simplificar la migraci?n entre micro-frontends.
+
+Us? esto como base en el `app.config.ts` del consumidor:
 
 ```typescript
 // app.config.ts
 import { ApplicationConfig } from '@angular/core';
-import { provideLucideIcons, LayoutDashboard, List, TriangleAlert } from '@lucide/angular';
+import { provideInventarioUi } from 'inventario-ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideLucideIcons({ LayoutDashboard, List, TriangleAlert }) // Registrar íconos usados
+    provideInventarioUi()
+  ]
+};
+```
+
+Si un micro-frontend necesita ?conos din?micos extra para su sidebar, pod?s extender el set base sin tocar la implementaci?n interna de la librer?a:
+
+```typescript
+import { ApplicationConfig } from '@angular/core';
+import { LucidePackage, LucideUsers } from '@lucide/angular';
+import { provideInventarioUi } from 'inventario-ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideInventarioUi({
+      icons: [LucidePackage, LucideUsers]
+    })
   ]
 };
 ```
