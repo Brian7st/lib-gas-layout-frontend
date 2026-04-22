@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LucideAngularModule } from 'lucide-angular';
+import { LucideDynamicIcon, LucideBox, LucideSettings, LucideUser, LucideLogOut } from '@lucide/angular';
 import { BarraLateralConfig } from '../models/nav.models';
 
 @Component({
-  selector: 'app-barra-lateral',
+  selector: 'lib-barra-lateral',
   standalone: true,
-  imports: [CommonModule, RouterModule, LucideAngularModule],
+  imports: [CommonModule, RouterModule, LucideDynamicIcon, LucideBox, LucideSettings, LucideUser, LucideLogOut],
   templateUrl: './barra-lateral.component.html',
   styleUrls: ['./barra-lateral.component.scss']
 })

@@ -1,12 +1,12 @@
 <div class="layout-principal">
-  <app-barra-lateral [config]="sidebarConfig"></app-barra-lateral>
+  <lib-barra-lateral [config]="sidebarConfig"></lib-barra-lateral>
 
   <main class="contenido-principal">
-    <app-barra-superior
+    <lib-barra-superior
       [perfil]="perfil"
       [buscarPlaceholder]="buscarPlaceholder"
       [enlaces]="topMenu"
-    ></app-barra-superior>
+    ></lib-barra-superior>
 
     <div class="contenido-principal__contenedor">
       <router-outlet></router-outlet>

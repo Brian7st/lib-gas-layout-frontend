@@ -6,7 +6,7 @@ import { BarraSuperiorComponent } from '../barra-superior/barra-superior.compone
 import { BarraLateralConfig, PerfilConfig, TopNavLink } from '../models/nav.models';
 
 @Component({
-  selector: 'app-main-layout',
+  selector: 'lib-main-layout',
   standalone: true,
   imports: [CommonModule, RouterModule, BarraLateralComponent, BarraSuperiorComponent],
   templateUrl: './main-layout.component.html',

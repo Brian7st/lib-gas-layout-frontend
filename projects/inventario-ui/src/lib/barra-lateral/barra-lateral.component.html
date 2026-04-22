@@ -7,7 +7,7 @@
         @if (config.logoUrl) {
           <img [src]="config.logoUrl" [alt]="config.titulo" class="barra-lateral__logo-img" />
         } @else {
-          <lucide-icon name="box" class="barra-lateral__logo-simbolo"></lucide-icon>
+          <svg lucideBox class="barra-lateral__logo-simbolo"></svg>
         }
       </div>
       <div class="barra-lateral__logo-texto">
@@ -32,7 +32,7 @@
               class="barra-lateral__enlace"
               [class.barra-lateral__enlace--con-insignia]="item.insignia !== undefined"
             >
-              <lucide-icon [name]="item.icono" class="barra-lateral__icono"></lucide-icon>
+              <svg [lucideIcon]="item.icono" class="barra-lateral__icono"></svg>
               <span class="barra-lateral__texto">{{ item.label }}</span>
               @if (item.insignia !== undefined) {
                 <span
@@ -52,15 +52,15 @@
   <!-- Footer fijo -->
   <div class="barra-lateral__pie">
     <a href="#" class="barra-lateral__enlace">
-      <lucide-icon name="settings" class="barra-lateral__icono"></lucide-icon>
+      <svg lucideSettings class="barra-lateral__icono"></svg>
       <span class="barra-lateral__texto">Configuración</span>
     </a>
     <a href="#" class="barra-lateral__enlace">
-      <lucide-icon name="user" class="barra-lateral__icono"></lucide-icon>
+      <svg lucideUser class="barra-lateral__icono"></svg>
       <span class="barra-lateral__texto">Perfil</span>
     </a>
     <a href="#" class="barra-lateral__enlace barra-lateral__enlace--peligro">
-      <lucide-icon name="log-out" class="barra-lateral__icono"></lucide-icon>
+      <svg lucideLogOut class="barra-lateral__icono"></svg>
       <span class="barra-lateral__texto">Cerrar Sesión</span>
     </a>
   </div>

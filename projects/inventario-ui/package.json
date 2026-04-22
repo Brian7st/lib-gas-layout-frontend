@@ -5,7 +5,7 @@
     "@angular/common": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/router": "^20.0.0",
-    "lucide-angular": "^1.0.0"
+    "@lucide/angular": "^0.547.0"
   },
   "dependencies": {},
   "sideEffects": false

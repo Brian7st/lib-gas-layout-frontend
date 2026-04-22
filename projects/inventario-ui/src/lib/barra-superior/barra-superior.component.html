@@ -13,7 +13,7 @@
 
   <div class="barra-superior__buscador-contenedor">
     <div class="barra-superior__buscador">
-      <lucide-icon name="search" class="barra-superior__buscador-icono"></lucide-icon>
+      <svg lucideSearch class="barra-superior__buscador-icono"></svg>
       <input
         class="barra-superior__buscador-input"
         [placeholder]="buscarPlaceholder"
@@ -25,14 +25,14 @@
   <div class="barra-superior__acciones">
     <div class="barra-superior__herramientas">
       <button class="barra-superior__boton-icono">
-        <lucide-icon name="bell"></lucide-icon>
+        <svg lucideBell></svg>
       </button>
 
       <div class="barra-superior__perfil">
         @if (perfil.avatarUrl) {
           <img [alt]="perfil.nombre || 'Usuario'" [src]="perfil.avatarUrl" class="barra-superior__img-perfil" />
         } @else {
-          <lucide-icon name="user" class="barra-superior__icono-perfil"></lucide-icon>
+          <svg lucideUser class="barra-superior__icono-perfil"></svg>
         }
       </div>
     </div>
